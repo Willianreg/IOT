@@ -1,0 +1,95 @@
+// C++ code
+//
+#define R 3
+#define G 6
+#define B 5
+
+int buzzer= 8;
+int cont = 1;
+
+void setup()
+{
+  pinMode(R, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+ 
+  int i;
+ 
+    for(i=100;i<=500;i+=100){
+     
+      if(cont == 1){  
+       
+       analogWrite(R, 255);
+       analogWrite(G, 0);
+       analogWrite(B, 0);
+       tone(buzzer, i, 1000);
+       delay(500);
+       noTone(buzzer);
+       delay(500);
+ 
+       cont++;
+      }else if(cont == 2){
+    //Amarelo
+ 
+    analogWrite(R, 255);
+    analogWrite(G, 255);
+    analogWrite(B, 0);
+    tone(buzzer, i, 1000);
+    delay(500);
+    noTone(buzzer);
+    delay(500);
+       
+      cont++;
+       
+      }else if(cont==3){
+ 
+    //Verde
+     
+    analogWrite(R, 0);
+    analogWrite(G, 255);
+    analogWrite(B, 0);
+    tone(buzzer, i, 1000);
+    delay(500);
+    noTone(buzzer);
+    delay(500);
+       
+    cont++;
+       
+      }else if(cont==4){
+   
+    //Azul
+     
+    analogWrite(R, 0);
+    analogWrite(G, 0);
+    analogWrite(B, 255);
+    tone(buzzer, i, 1000);
+    delay(500);
+    noTone(buzzer);
+    delay(500);
+       
+     cont++;
+       
+      }else{
+    //Magenta
+     
+    analogWrite(R, 255);
+    analogWrite(G, 0);
+    analogWrite(B, 255);
+    tone(buzzer, i, 1000);
+    delay(500);
+    noTone(buzzer);
+    delay(500);
+       
+    cont=1;
+      }
+     
+    }
+   
+ 
+}

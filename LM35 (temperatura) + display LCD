@@ -1,0 +1,27 @@
+# Codigo para mostrar no display com placa arduino
+
+#include<LiquidCrystal.h>
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+const int LM35 = A0;
+int temperatura;
+
+void setup()
+{
+  Serial.begin(9600);
+ lcd.begin(16, 2);
+}
+
+void loop()
+{
+  int reading = analogRead(LM35);
+  float voltage = reading * (5.0 / 1023.0);
+  float temperatureC = voltage * 100;
+  lcd.setCursor(2,0);          
+  lcd.print("Temperatura: ");
+  lcd.setCursor(4,1);          
+  lcd.print(temperatureC);
+  lcd.print("C");
+ 
+  }

@@ -1,0 +1,40 @@
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+#define endereco 0x20 // Substitua pelo endereço correto do seu display
+#define colunas 16
+#define linhas 2
+
+LiquidCrystal_I2C lcd(endereco, colunas, linhas);
+
+const int led_verde = 8;
+const int led_amarelo = 9;
+const int led_vermelho = 10;
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  pinMode(led_verde, OUTPUT);
+  pinMode(led_amarelo, OUTPUT);
+  pinMode(led_vermelho, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(led_vermelho, HIGH);
+  lcd.clear();
+  lcd.print("Vermelho");
+  delay(2000);
+  digitalWrite(led_vermelho, LOW);
+
+  digitalWrite(led_verde, HIGH);
+  lcd.clear();
+  lcd.print("Verde");
+  delay(3000);
+  digitalWrite(led_verde, LOW);
+
+  digitalWrite(led_amarelo, HIGH);
+  lcd.clear();
+  lcd.print("Amarelo");
+  delay(1000);
+  digitalWrite(led_amarelo, LOW);
+}

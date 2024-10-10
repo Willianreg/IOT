@@ -1,0 +1,37 @@
+int PotenciometroX = A0;  
+int PotenciometroY = A1;  
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int valorX = analogRead(PotenciometroX);
+  int valorY = analogRead(PotenciometroY);
+
+  String direcaoX = "";
+  String direcaoY = "";
+
+  if (valorX < 300) {
+    direcaoX = "Direita";
+  } else if (valorX > 700) {
+    direcaoX = "Esquerda";
+  } else {
+    direcaoX = "Neutro";
+  }
+
+  if (valorY < 300) {
+    direcaoY = "Baixo";
+  } else if (valorY > 700) {
+    direcaoY = "Cima";
+  } else {
+    direcaoY = "Neutro";
+  }
+
+  Serial.print("Eixo X: ");
+  Serial.print(direcaoX);
+  Serial.print("Eixo Y: ");
+  Serial.println(direcaoY);
+
+  delay(500);
+}
